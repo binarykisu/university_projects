@@ -1,3 +1,11 @@
+"""
+This code comes from an assignment in an advanced "learning to code" Python course, and it was completed while I was still a student.
+The goal of this code is to practice **functional programming** by using lambda, filter, and map functions.
+In this example, the program stores information about students' courses and their number of credits.
+
+The console outputs the course information (name, credits, grade earned), along with the student's overall average grade.
+"""
+
 from functools import reduce
 
 # Creates a class for each course attempt with its name, grade, and number of credits
@@ -10,7 +18,7 @@ class CourseAttempt:
     
     # Returns a string representation of the course attempt in the desired format
     def __str__(self):
-        return f"{self.course_name} ({self.credits} cr) grade {self.grade}"
+        return f"{self.course_name} - ({self.credits} cr) | Grade: {self.grade}"
 
 # A helper function that returns an updated sum of credits
 def sums_credits(credits_sum, attempt) -> int:
@@ -31,7 +39,7 @@ def average_grade(attempts:list) -> float:
     if not passed_courses: # Function returns 0.0 if there are no passed courses
         return 0.0
     passed_grades = [courses.grade for courses in passed_courses]
-    return sum(passed_grades) / len(passed_courses)
+    return f"Average grade: {(sum(passed_grades) / len(passed_courses)):.1f}"
  
 if __name__ == "__main__":
     # Testing the code by creating new instances for each student
@@ -39,4 +47,4 @@ if __name__ == "__main__":
     student_2 = CourseAttempt("Advanced Course in Programming", 0, 4)
     student_3 = CourseAttempt("Data Structures and Algorithms", 3, 10)
     print(f"{student_1}\n{student_2}\n{student_3}")
-    print(f"Average grade: {average_grade([student_1, student_2, student_3])}")
+    print(average_grade([student_1, student_2, student_3]))
