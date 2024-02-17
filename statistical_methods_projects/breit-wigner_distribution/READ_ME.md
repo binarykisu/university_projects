@@ -23,4 +23,8 @@ This goal for this program is to first generate random numbers according to a BW
 
 ## Results
 
-![Alternate image text]()
+![BW distribution](https://github.com/binarykisu/university_assignments/blob/main/statistical_methods_projects/breit-wigner_distribution/bw_dist.png)
+
+Pretty cool, right?
+
+Furthermore, the values I obtained for $\mu$ and $\sigma$ were $25.062$ and $1.599$, respectively. Comparing these with $E_s = 25$ and $\Gamma_s=5$, we can see that it wasn't too far off.
