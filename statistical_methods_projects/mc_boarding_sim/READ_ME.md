@@ -3,7 +3,7 @@
 ## Introduction
 
 This project is one from my statistical methods university courses, but it is generally a popular, practical, and thought-provoking problem that is good for improving one's coding skills. This exercise has been worked through 
-by using Monte Carlo methods to examine the boarding of passengers onto an Airbus A320 (seen in the image below). 
+by using Monte Carlo methods to examine the boarding of passengers onto an Airbus A320 ([like this one](https://www.seatguru.com/airlines/Finnair/Finnair_Airbus_A320.php)). 
 
 ## The goal
 
@@ -29,4 +29,9 @@ Here are the "givens" for this problem, or the rules that we have to follow:
 - Aisle interference must be considered - a passenger cannot get through to their row if another passenger is standing in the aisle to put their luggage in the overhead compartment.
   - Aisle interference takes $25 s$ to complete.
 
-[An image of an Airbus 320 seating chart.](https://www.seatguru.com/airlines/Finnair/Finnair_Airbus_A320.php)
+## Results
+
+After everyone has been seated, the time on the clock is stored. After performing 100 boarding simulations, the mean/average boarding time and
+the standard deviation of the times is calculated. For this project, I found that the average boarding time takes $t \approx 1402 \pm 72$ seconds (or $\approx 23 \pm 1$ minutes) to complete.
+
+That's all for now!
