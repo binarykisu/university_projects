@@ -155,7 +155,7 @@ class BoardingProcess():
       print(f"The plane has {self.num_rows} rows with {self.num_cols} seats each.")
     else:
       print(f"The plane has {self.num_rows} rows with {self.num_cols} seats each, except the first row, which has only 3 seats.")
-    print(f"Over {self.num_simulations} simulations, the average time for all passengers to board the plane is {mean} +- {math.sqrt(var)} seconds.")
+    print(f"Over {self.num_simulations} simulations, the average time for all passengers to board the plane is {mean:.1f} +- {math.sqrt(var):.1f} seconds.")
 
 if __name__ == "__main__":
     boarding_process = BoardingProcess()
