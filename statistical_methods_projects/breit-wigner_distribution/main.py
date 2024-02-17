@@ -49,7 +49,7 @@ optim_result = minimize(loss, initial_guess, args=(E_fitted, y_fitted))
 
 # Extract the optimal mu and sigma parameters
 mu_opt, sigma_opt = optim_result.x
-# print(mu_opt, sigma_opt) # If you want to know the values for mu and sigma optimized
+#print(mu_opt, sigma_opt) # If you want to know the values for mu and sigma optimized
 
 # Plot the histogram of the data
 plt.figure(figsize=(12, 6))
