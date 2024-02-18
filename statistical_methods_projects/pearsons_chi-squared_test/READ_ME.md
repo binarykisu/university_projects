@@ -37,7 +37,7 @@ For the second test:
 
 Here is the figure which best shows what we've figured out so far:
 
-![Figure 1]()
+![Figure 1](https://github.com/binarykisu/university_assignments/blob/main/statistical_methods_projects/pearsons_chi-squared_test/Figure_1.png)
 
  Finally, for the third test:
  - The value for $a$ and the best modeled $\chi^2$ value is found by varying the value of a constant, $a$ (representing the amount of background 1 appearing in the sample), between 0 and 1 and finding which value results in the smallest value for $\chi^2$.
