@@ -47,6 +47,6 @@ Here is the figure which best shows what we've figured out so far:
 
 Here is the second figure, showing the results found from the third test:
 
-![Figure 2]()
+![Figure 2](https://github.com/binarykisu/university_assignments/blob/main/statistical_methods_projects/pearsons_chi-squared_test/Figure_2.png)
 
 That's all for this project!
