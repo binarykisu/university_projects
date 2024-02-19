@@ -60,7 +60,9 @@ class BoardingProcess():
     self.delay_swap = 11 # Delay for passengers swapping seats
     self.delay_double = 22 # Delay for passengers swapping seats with two already-seated passengers
     self.num_simulations = 100 # Number of boardings simulated
-    random.seed(5) # Initialize random seed
+    
+    # If you would like reproducability, uncomment this
+    # random.seed(5) # Initialize random seed
 
   def seat_assignment(self) -> list[Passenger]:
     """Assigns seats to passengers in a random order;
