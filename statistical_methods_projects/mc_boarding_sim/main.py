@@ -1,6 +1,7 @@
 # Importing the necessary libraries
 import random
 import math
+import pandas as pd
 
 # A class for creating instances of passenger objects
 # Keeps track of passenger's seat number, position, and busy status
@@ -46,7 +47,7 @@ class Passenger:
 
 # Function that simulates the boarding process and calculates the mean/variance
 class BoardingProcess():
-  def __init__(self):
+  def __init__(self, num_simulations: int):
     # All units of time are in seconds, position in meters
     self.num_rows = 28 # Number of rows in the plane
     self.half_row = True  # First row has 3 seats only
@@ -59,10 +60,13 @@ class BoardingProcess():
     self.delay_aisle = 25 # Delay for passengers in the aisle
     self.delay_swap = 11 # Delay for passengers swapping seats
     self.delay_double = 22 # Delay for passengers swapping seats with two already-seated passengers
-    self.num_simulations = 100 # Number of boardings simulated
+    self.num_simulations = num_simulations # Number of boardings simulated
     
     # If you would like reproducability, uncomment this
-    # random.seed(5) # Initialize random seed
+    random.seed(5) # Initialize random seed
+    # random_seed = random.randint(0, 1000)  # Generate a random seed for each simulation
+    # random.seed(random_seed)
+    # print(random_seed)
 
   def seat_assignment(self) -> list[Passenger]:
     """Assigns seats to passengers in a random order;
@@ -159,6 +163,32 @@ class BoardingProcess():
       print(f"The plane has {self.num_rows} rows with {self.num_cols} seats each, except the first row, which has only 3 seats.")
     print(f"Over {self.num_simulations} simulations, the average time for all passengers to board the plane is {mean:.1f} +- {math.sqrt(var):.1f} seconds.")
 
+  def store_boarding_process(self) -> pd.DataFrame:
+    """Runs the boarding simulation and stores data in a DataFrame;
+    Returns the DataFrame"""
+    results = []
+    for _ in range(self.num_simulations):
+      passengers = self.seat_assignment()
+      clock = self.boarding_process(passengers)
+      simulation_data = {
+        'Num Rows': self.num_rows,
+        'Num Columns': self.num_cols,
+        'Half Row': self.half_row,
+        'Passenger Speed': self.passenger_speed,
+        'Time Step': self.time_step,
+        'Delay Aisle': self.delay_aisle,
+        'Delay Swap': self.delay_swap,
+        'Boarding Time': clock
+      }
+      
+      results.append(simulation_data)
+    df = pd.DataFrame(results)
+    return df
+
 if __name__ == "__main__":
-    boarding_process = BoardingProcess()
+    num_simulations = 100
+    
+    boarding_process = BoardingProcess(num_simulations)
     boarding_process.run_boarding_process()
+    print(boarding_process.store_boarding_process()[:5])
+    print(f"and {num_simulations - 5} more rows...")
