@@ -81,7 +81,7 @@ plt.show()
 # Prints the results for part 2
 print("\nPart 2:\n")
 print(f"k: {x[1]}")
-print(f"nu_0: {x[0]}")
+print(f"nu_0: {x[0]:.2f}")
 print(f"Uncertainty of k: {(np.where(np.sum(uncertainty_matrix, axis=0) > 0)[0][-1] - np.where(np.sum(uncertainty_matrix, axis=0) > 0)[0][0]) * 0.001 * 10**-23 / 2}")
 print(f"Uncertainty of nu_0: {(np.where(np.sum(uncertainty_matrix, axis=1) > 0)[0][-1] - np.where(np.sum(uncertainty_matrix, axis=1) > 0)[0][0]) * 0.01 / 2}")
 
