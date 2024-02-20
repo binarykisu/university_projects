@@ -14,7 +14,7 @@ where $n_{data}$ are the Poisson distributed measurements (histogram bin content
 ## Goal
 
 The aim for this project is to employ the $\chi^2$ test to compare mass measurements obtained from real data with those simulated from two different background models. 
-The first test will be to see if data can be described by only the first background (from `MC1_mass.txt`), and similarly by only the second background (from `MC2_mass.txt`).
+The first test will be to see if data can be described by only the first background (from `MC1_mass.txt`), and similarly by only the second background (from `MC2_mass.txt`).
 
 A few bins have some small values, so one doesn’t expect for the test statistic to exactly follow the theoretical $\chi^2$ distribution. 
 Therefore, the second test will be to try to determine the true distribution assuming the two hypotheses, `MC1_mass` and `MC2_mass`.
