@@ -59,17 +59,17 @@ sort-of does the same thing.
 
 Adding the first grain:
 
-![Figure 1: The first grain has been added to the grid.]()
+![Figure 1: The first grain has been added to the grid.](https://github.com/binarykisu/university_assignments/blob/main/monte_carlo_projects/mc_sandpile/Figure%201.png)
 
 After many iterations (_Remember: the size of the grid and number of iterations can be chosen_), here is an example of what it looks like for the sandpile to have an avalanche:
 - As you can see, this pile is looking pretty tall..
 
- ![Figure 2: A pile that is getting tall, and ready to topple over.]()
+ ![Figure 2: A pile that is getting tall, and about to topple over.](https://github.com/binarykisu/university_assignments/blob/main/monte_carlo_projects/mc_sandpile/Figure%202.png)
 
 - Another grain is added to this same pile! It will now topple over.
 
- ![Figure 3: The pile topples over to the right.]()
+ ![Figure 3: The pile topples over to the right.](https://github.com/binarykisu/university_assignments/blob/main/monte_carlo_projects/mc_sandpile/Figure%203.png)
 
-- As you can see, the new piles are now in a more stable state and are at $45\degree$ angles.
+- As you can see, the states of the piles are now more stable.
 
 That's all for this project. Thanks for sticking around, and I hope you learned something cool about cellular automata!
