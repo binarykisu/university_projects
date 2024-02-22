@@ -4,80 +4,80 @@ import matplotlib.pyplot as plt
 
 def initialize_grid(num_sites:int):
     """
-    Step 1 - Initialize the sandpile grid with zeros.
+    Step 1: Initialize the sandpile grid with zeros.
     """
     return np.zeros(num_sites+2)
     
-def add_grain(grid:list):
+def add_grain(grid:list) -> None:
     """
-    Rule: Step 1 - Add a grain to the left-most site.
+    Step 2: Add a grain to the middle site of the grid.
     """
-    grid[len(grid)//2] += 1
-    print(f"Added left-most grain -> {grid}")
+    grid[len(grid)//2] += 1 # Choose the middle of the grid
+    print(f"Added grain to the middle -> {grid[1 : -1]}")
     
-def drop_grains(grid, num_sites:int):
+def drop_grains(grid, num_sites:int) -> None:
     """
-    Drop grains randomly everywhere in the interval [1, num_sites].
+    Modification to Step 2: Drop grains randomly across the grid interval.
     """
-    site = choice(range(1, num_sites))  # Choose a random site to drop grain
+    site = choice(range(1, num_sites))  # Choose a random site 
     grid[site] += 1
-    print(f"Added grain to site {site} -> {grid}")
+    print(f"Added grain to site {site} -> {grid[1 : -1]}")
 
-def topple(grid, num_sites:int):
+def topple(grid, num_sites:int) -> None:
     """
-    Rule: Step 2 - 4 - Mark sites for toppling if h(i) - h(i + 1) > 2 and topple them to the right.
+    Step 3 - 4: Mark sites for toppling if h(i) - h(i + 1) > 2 and topple them to the left or right.
     """ 
     toppled = False
-    for i in range(len(grid)): # run through all 12 sites
-        # print(f"site: {i}")
-        if i == 0 or i == len(grid) - 1:
-            # print(f"At site {i}, setting grains to 0.")
+    for i in range(len(grid)): # Run through all grid sites
+        # print(f"site: {i}") # For testing
+        if i == 0 or i == len(grid) - 1: # Grains past the set number of sites are lost forever (= 0)
+            # print(f"At site {i}, setting grains to 0.") # For testing
             grid[i] = 0
-        elif int(grid[i]) - int(grid[i + 1]) > 2: # mark site for toppling
-            # print(f"{int(grid[i])} - {int(grid[i + 1])} > 1")
+        elif int(grid[i]) - int(grid[i + 1]) > 2: # Mark site for toppling
             toppled = True
             print(f"Toppled!")            
-            direction = choice([-1, 1]) # randomly choose left or right direction
-            # print(f"Direction to topple: {direction}")
+            direction = choice([-1, 1]) # Randomly choose left or right direction
+            # print(f"Direction to topple: {direction}") # For testing
             grid[i] -= 2
             grid[i + direction] += 1
-            if abs(int(grid[i]) - int(grid[i + 1])) == 1: # if only 3 larger on one side
+            if abs(int(grid[i]) - int(grid[i + 1])) == 1: # If only 3 larger on one side
                 grid[i + 2*direction] += 1
     plot_sandpile(grid)  # Call plot_sandpile after toppling
-    return toppled
 
-def plot_sandpile(grid):
+def plot_sandpile(grid) -> None:
     """
-    Visualize the sandpile with grains represented by '¤' and empty sites represented by spaces.
+    Visualizes the sandpile with grains represented by '¤' in the console/terminal.
     """
-    max_height = int(max(grid))
-    print(f"\nMax height of sandpile: {max_height}\n")
+    max_height = int(max(grid)) # Height of plot
+    print(f"\n| = Lost forever\nMax height of sandpile: {max_height}\n") # Plot information
     
-    if max_height <= 0:  # If sandpile is empty, print only the horizontal axis
-        print('+' + '-'*len(grid)*3 + '+')
+    if max_height <= 0:  # If sandpile is empty, print only the x-axis
+        print('+' + '-' * len(grid) * 3 + '+') # x-axis
         return
     
-    for height in reversed(range(max_height + 1)):
-        #row = f'    |'
+    for height in reversed(range(max_height + 1)): 
         row = f'|'
-        for site in grid[1:-1]:  # Exclude boundary sites
+        for site in grid[1 : -1]:  # Exclude boundary sites
             if int(site) > height:
-                row += ' ¤ '
+                row += ' ¤ ' # Print if grain is present
             else:
-                row += '   '
-        print(row + ' |')
-    print('+' + '-' * len(row) + '+')
+                row += '   ' # Grain not present here
+        print(row + ' |') # Boundaries/lost forever
+    print('+' + '-' * len(row) + '+') # x-axis
 
-def run_sandpile(num_sites:int, iterations:int):
-    grid = initialize_grid(num_sites)
+def run_sandpile(num_sites:int, iterations:int) -> None:
+    """
+    Main function to run the sandpile program.
+    Inputs: num_sites = size of grid; iterations = how many seeds are added to the sandpile
+    """
+    grid = initialize_grid(num_sites) # This is the h(i) function
     for iter in range(iterations):
-        print(f"\nIteration: {iter+1}")
-        # add_grain(grid) # If you want grains dropped on the left-most site only
+        print(f"\nIteration: {iter + 1}")
+        # add_grain(grid) # If you want grains dropped in the middle of the grid
         drop_grains(grid, num_sites)  # Drop grains randomly across the sandpile
-        topple(grid, num_sites)
-
+        topple(grid, num_sites) # Checks/handles sites to see if they need to be toppled
 
 if __name__ == "__main__":
-    iterations = 20  
-    num_sites = 10 # number of sites
-    run_sandpile(num_sites, iterations)
+    iterations = 20  # Desired number of iterations
+    num_sites = 10 # Number of sites
+    run_sandpile(num_sites, iterations) # Runs the sandpile simulation
