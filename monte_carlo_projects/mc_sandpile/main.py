@@ -40,8 +40,8 @@ def topple(grid, num_sites:int) -> None:
             # print(f"Direction to topple: {direction}") # For testing
             grid[i] -= 2
             grid[i + direction] += 1
-            if abs(int(grid[i]) - int(grid[i + 1])) == 1: # If only 3 larger on one side
-                grid[i + 2*direction] += 1
+            if abs(int(grid[i]) - int(grid[i + direction])) > 2: # If more than 2 larger on one side
+                grid[i + 2 * direction] += 1
     plot_sandpile(grid)  # Call plot_sandpile after toppling
 
 def plot_sandpile(grid) -> None:
@@ -78,6 +78,6 @@ def run_sandpile(num_sites:int, iterations:int) -> None:
         topple(grid, num_sites) # Checks/handles sites to see if they need to be toppled
 
 if __name__ == "__main__":
-    iterations = 50  # Desired number of iterations
+    iterations = 60  # Desired number of iterations
     num_sites = 15 # Number of sites
     run_sandpile(num_sites, iterations) # Runs the sandpile simulation
