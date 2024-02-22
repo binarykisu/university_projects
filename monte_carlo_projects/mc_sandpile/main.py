@@ -4,28 +4,28 @@ import matplotlib.pyplot as plt
 
 def initialize_grid(num_sites:int):
     """
-    Step 1: Initialize the sandpile grid with zeros.
+    Step 0: Initialize the sandpile grid with zeros.
     """
-    return np.zeros(num_sites+2)
+    return np.zeros(num_sites+2) # Grid of length, L
     
 def add_grain(grid:list) -> None:
     """
-    Step 2: Add a grain to the middle site of the grid.
+    Step 1: Add a grain to the middle site of the grid.
     """
     grid[len(grid)//2] += 1 # Choose the middle of the grid
-    print(f"Added grain to the middle -> {grid[1 : -1]}")
+    print(f"Added grain to site {site}")
     
 def drop_grains(grid, num_sites:int) -> None:
     """
-    Modification to Step 2: Drop grains randomly across the grid interval.
+    Modification to Step 1: Drop grains randomly across the grid interval.
     """
     site = choice(range(1, num_sites))  # Choose a random site 
     grid[site] += 1
-    print(f"Added grain to site {site} -> {grid[1 : -1]}")
+    print(f"Added grain to site {site}")
 
 def topple(grid, num_sites:int) -> None:
     """
-    Step 3 - 4: Mark sites for toppling if h(i) - h(i + 1) > 2 and topple them to the left or right.
+    Step 2 - 4: Mark sites for toppling if h(i) - h(i + 1) > 2 and topple them to the left or right.
     """ 
     toppled = False
     for i in range(len(grid)): # Run through all grid sites
@@ -78,6 +78,6 @@ def run_sandpile(num_sites:int, iterations:int) -> None:
         topple(grid, num_sites) # Checks/handles sites to see if they need to be toppled
 
 if __name__ == "__main__":
-    iterations = 20  # Desired number of iterations
-    num_sites = 10 # Number of sites
+    iterations = 50  # Desired number of iterations
+    num_sites = 15 # Number of sites
     run_sandpile(num_sites, iterations) # Runs the sandpile simulation
