@@ -198,6 +198,44 @@ def plot_hits_and_misses() -> None:
     plt.yticks([])
     
     plt.show()
+    
+    
+    
+    
+    
+def g_square(x):
+    """
+    Defines a square function larger than all of f(x).
+    """
+    square_values = np.zeros_like(x)
+    square_values[(x > -20) & (x < 20)] = np.max(f(x)) + 0.1  # Set values within the square region to the maximum height of f(x)
+    return square_values
+
+def plot_old_hm():
+    """
+    Shows what the "old" hit-and-miss method might look like.
+    """
+    x_values = np.linspace(-20, 20, 1000)
+    f_values = f(x_values)
+    g_values = A * gaussian(x_values, 0, s)
+    g_square_values = g_square(x_values)
+
+    plt.figure(figsize=(10, 6))
+    plt.plot(x_values, f_values, label='f(x)', color='blue', lw=1)
+    plt.fill_between(x_values, f_values, color='blue', alpha=0.3)
+    plt.plot(x_values, g_square_values, color='pink', lw=1)
+    plt.fill_between(x_values, g_square_values, color='pink', alpha=0.3)
+
+    plt.title('Hits and Misses of Combined Method')
+    plt.text(0, 0.2, 'Hits', fontsize=12, color='blue', ha='center')
+    plt.text(3, 0.6, 'f(x)', fontsize=12, color='blue', ha='center')
+    plt.text(-17, 1.0, 'Misses', fontsize=12, color='pink', ha='center')
+
+    plt.xticks([])
+    plt.yticks([])
+
+    plt.show()
+
 
 if __name__ == "__main__":
     # Prints out generated random number values for analytical method & combined method
@@ -211,3 +249,6 @@ if __name__ == "__main__":
     
     # Plot hits and misses
     plot_hits_and_misses()
+    
+    # Plot "old" hit-and-miss method
+    plot_old_hm()
