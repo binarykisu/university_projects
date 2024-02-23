@@ -44,6 +44,22 @@ Some math later, we get $$F^{-1}(u) = 2 \tan \left[ x \left[ \tan^{-1} \left( 5 
 
 We've finally made it to the results part!
 
+Here's an example of what the hit-and-miss method might look like on its own:
+
+![Figure of f(x) and the "mask" function g(x) as a square](https://github.com/binarykisu/university_assignments/blob/main/monte_carlo_projects/mc_analytical_approaches/Figure_4.png)
+
+It turns out that by doing this combined method, the "hits" are around $30$% more efficient! This is because we have acieved the goal of $g(x)$ being larger than $f(x)$ for all $x$ values, but not too much larger.
+
+![Figure of our combined hit-and-miss method](https://github.com/binarykisu/university_assignments/blob/main/monte_carlo_projects/mc_analytical_approaches/Figure_3.png)
+
+This figure above is just a rough estimate of what we should expect. This next figure shows the actual results found by following the steps listed above. 
+
+![Figure comparing the combined hit-and-miss method versus just the analytical method](https://github.com/binarykisu/university_assignments/blob/main/monte_carlo_projects/mc_analytical_approaches/Figure_1.png)
+
+In this figure, I have plotted function $f(x)$ and "mask" function $g(x)$ as a sort of guidelines showing how well each method performs when trying to model the $f(x)$ distribution. The blue historgram bars are what we get when following the analytical method by itself, and the orange histogram shows what we get using the combined method. As you can see, the orange histogram performs better ($\approx 30$%). 
+
+Whew! This was a long one, so thanks for sticking around. I hope you learned something cool!
+
 
 
 
