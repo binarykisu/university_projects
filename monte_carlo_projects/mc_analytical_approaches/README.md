@@ -1,4 +1,4 @@
-# Analytical approaches to Monte Carlo Methods
+# Random Number Generating approaches to Monte Carlo Methods
 
 ## Introduction
 
