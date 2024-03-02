@@ -12,3 +12,7 @@ in the way that the user wants. For instance, climbing areas could be returned s
 
 This project takes in information about student's university courses, such as their names and number of credits. The main goal here was to practice _functional_ programming by using `filter()`, `map()`, and `reduce()`
 methods. The code should be able to return the student's average grade from all courses, along with filtering out those which the student failed.
+
+## Delivery fee calculator
+
+This project calculates the delivery fee a customer will pay when they place orders from a restaurant online. In particular, this project practices using an HTTP API (with a single POST endpoint) to calculate the fee based on factors such as the the cart value, number of items in the cart, time of the order, and delivery distance. It returns the calculated delivery fee in the response payload (all in JSON format). 
